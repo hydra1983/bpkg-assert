@@ -12,8 +12,7 @@ function _assert() {
   
   result=$(eval "test ${expression}" && echo "true")
 
-  if [ "${result}" != "true" ]
-  then
+  if [[ "${result}" != "true" ]]; then
     if [[ ! -z "${message}" ]]; then
       local msg="${message}"
     fi
@@ -24,6 +23,7 @@ function _assert() {
 
     _error "${msg}"
 
+    sleep 1
     exit ${SHASSERT_EXIT_CODE}
   # else
   #   return
