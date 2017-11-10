@@ -1,0 +1,34 @@
+#!/usr/local/bin/bash
+
+__load "${BASH_SOURCE[0]}" "shlogging"
+
+let SHASSERT_EXIT_CODE=${SHASSERT_EXIT_CODE:-10000}
+
+function _assert() {
+  local expression="$1"
+  local message="$2"
+  local lineno="$3"
+  local result
+  
+  result=$(eval "test ${expression}" && echo "true")
+
+  if [ "${result}" != "true" ]
+  then
+    if [[ ! -z "${message}" ]]; then
+      local msg="${message}"
+    fi
+
+    if [[ ! -z "${lineno}" ]]; then
+      local msg="${msg} '[File] $0@$lineno'"
+    fi
+
+    _error "${msg}"
+
+    exit ${SHASSERT_EXIT_CODE}
+  # else
+  #   return
+  #   and continue executing the script.
+  fi
+}
+
+export -f _assert

@@ -1,0 +1,12 @@
+{
+    "name": "shassert",
+    "version": "0.1.0",
+    "description": "Assertion utilities",
+    "scripts": [
+        "shassert"
+    ],
+    "install": "make install",
+    "dependencies": {
+        "https://coding.net/u/hydra1983/p/bpkg-logging": "master"
+    }
+}
