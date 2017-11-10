@@ -23,7 +23,6 @@ function _assert() {
 
     _error "${msg}"
 
-    sleep 1
     exit ${SHASSERT_EXIT_CODE}
   # else
   #   return
