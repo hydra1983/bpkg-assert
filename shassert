@@ -10,7 +10,7 @@ function _assert() {
   local lineno="$3"
   local result
   
-  result="$($(test "${expression}") && echo "true" || echo "false")"
+  result="$(test "${expression}" && echo "true" || echo "false")"
 
   if [[ "${result}" != "true" ]]; then
     if [[ ! -z "${message}" ]]; then
